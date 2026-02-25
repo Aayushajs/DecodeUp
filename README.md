@@ -8,14 +8,14 @@ This project is a comprehensive full-stack e-commerce solution designed with an 
 ## Project Visuals
 
 ### Desktop Experience
-![Hero Section](./docs/screenshots/hero_section.jpg)
+<img src="docs/screenshots/hero_section.jpg" width="800" alt="Hero Section" />
 *Editorial Hero Section with dynamic randomized stats.*
 
-![Desktop Grid](./docs/screenshots/desktop_grid.png)
+<img src="docs/screenshots/desktop_grid.png" width="800" alt="Desktop Grid" />
 *Clean product discovery grid with hover interactions.*
 
 ### Mobile Experience
-![Mobile View](./docs/screenshots/mobile_view.png)
+<img src="docs/screenshots/mobile_view.png" width="300" alt="Mobile View" />
 *Fully responsive mobile layout optimized for shopping on the go.*
 
 ---
@@ -48,9 +48,9 @@ This project is a comprehensive full-stack e-commerce solution designed with an 
 
 The project is organized as a monorepo-style structure to ensure clear separation of concerns:
 
-- /frontend: Contains the React application, styling, and client-side logic.
-- /backend_dev: The development-focused backend server implementation.
-- /backend_production: The production-ready backend server implementation.
+- /frontend: Contains the React application, styling, and client-side logic. [View Frontend README](./frontend/README.md)
+- /backend_dev: The development-focused backend server implementation. [View Dev Backend README](./backend_dev/README.md)
+- /backend_production: The production-ready backend server implementation. [View Production Backend README](./backend_production/README.md)
 
 ### Why there are two backends
 The dual-backend strategy allows for maximum flexibility. The development backend (backend_dev) utilizes TypeORM for its ease of use during high-velocity development phases. The production backend (backend_production) utilizes Prisma to provide stricter type safety at the database layer and more predictable migration paths, which is essential for maintaining production environments.
