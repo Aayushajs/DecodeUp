@@ -1,0 +1,102 @@
+.about-page {
+    padding-top: 8rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 6rem;
+}
+
+.about-hero {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.about-title {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.about-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 6rem;
+}
+
+.about-card {
+    padding: 2.5rem;
+    background: white;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.about-icon {
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    width: 32px;
+    height: 32px;
+}
+
+.about-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+
+.about-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.about-philosophy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    background: var(--accent-light);
+    padding: 4rem;
+    border-radius: 40px;
+}
+
+.philosophy-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 900;
+}
+
+.philosophy-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.philosophy-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .about-philosophy {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+        text-align: center;
+    }
+}

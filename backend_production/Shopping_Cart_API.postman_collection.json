@@ -1,0 +1,199 @@
+{
+  "info": {
+    "name": "Shopping Cart API",
+    "description": "Postman collection for Shopping Cart Backend API (NestJS + PostgreSQL) — Exact endpoints as per spec",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Products",
+      "description": "GET /products - Returns list of products from PostgreSQL",
+      "item": [
+        {
+          "name": "GET All Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["products"]
+            },
+            "description": "GET /products - Returns list of products (id, name, price, image)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cart",
+      "description": "Cart CRUD endpoints",
+      "item": [
+        {
+          "name": "GET Cart (with total count & price)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cart",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart"]
+            },
+            "description": "GET /cart - Returns cart items with total count and total price"
+          },
+          "response": []
+        },
+        {
+          "name": "POST Add to Cart (productId + quantity)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": 1,\n  \"quantity\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cart",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart"]
+            },
+            "description": "POST /cart - Add an item to the cart (insert or update quantity in PostgreSQL)"
+          },
+          "response": []
+        },
+        {
+          "name": "POST Add to Cart (default quantity 1)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": 3\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cart",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart"]
+            },
+            "description": "POST /cart - Add item with default quantity of 1"
+          },
+          "response": []
+        },
+        {
+          "name": "POST Add to Cart - ERROR: Empty Body",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cart",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart"]
+            },
+            "description": "Should return 400 Bad Request - productId is required"
+          },
+          "response": []
+        },
+        {
+          "name": "POST Add to Cart - ERROR: Product Not Found",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": 999,\n  \"quantity\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cart",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart"]
+            },
+            "description": "Should return 404 Not Found - Product with ID 999 does not exist"
+          },
+          "response": []
+        },
+        {
+          "name": "POST Add to Cart - ERROR: Negative Quantity",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": 1,\n  \"quantity\": -5\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cart",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart"]
+            },
+            "description": "Should return 400 Bad Request - quantity must be at least 1"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Remove Item from Cart",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cart/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart", "1"]
+            },
+            "description": "DELETE /cart/:id - Remove an item from the cart in PostgreSQL"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Remove Cart Item - ERROR: Not Found",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cart/999",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart", "999"]
+            },
+            "description": "Should return 404 Not Found - Cart item with ID 999 does not exist"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
